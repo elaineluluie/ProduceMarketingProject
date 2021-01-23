@@ -1,0 +1,52 @@
+{% load static %}
+<head>
+  <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+  <title>小木屋</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+  <div id="wrapper">
+    <header>
+      <div id="logo">
+        <img  src="{% static 'logo1.jpg' %}" alt="" width=200; style="display:block; margin:auto;" />
+      </div>
+    </header>
+    <div id="content">
+      <form>
+        <div class="form-group">
+          <input class="form-control" placeholder="E-mail" name="email" type="email" id="email">
+        </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="Password" name="password" type="password" id="password">
+        </div>
+        <div class="checkbox">
+          <label>
+            <input name="remember" type="checkbox">記住我
+          </label>
+        </div>
+        <div id="btn">
+          <script language="javascript">
+            function login() {
+              var username = document.getElementById("email");
+              var pass = document.getElementById("password");
+              if (username.value == "") {
+              alert("請輸入使用者名稱");
+              } else if (pass.value  == "") {
+              alert("請輸入密碼");
+              } else if(username.value == "nccushine@gmail.com" && pass.value == "123"){
+              window.location.href='http://140.119.97.4:8888/catalog/welcome';
+              } else {
+              username.value=null
+              pass.value=null
+              alert("請輸入正確的使用者名稱和密碼！")
+              }
+            }
+          </script>
+          <input type="button" value="登入" id="logIn" onclick="login();" accesskey="enter">
+          </input>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,191 @@
+{% load static%}
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+  <title>作業管理系統</title>
+  <link rel="stylesheet" href="{% static 'style3.css' %}">
+</head>
+
+<body>
+  <div id="wrapper">
+
+    <div id="sidebar">
+      <header>
+      <div id="logo">
+        <img src="{% static 'logo1.jpg' %}"alt="" width=250; style="display:block; margin:auto;" />
+    </div>
+    </header>
+      <ul style='list-style-type:none;'>
+        <li><a href='http://140.119.97.4:8888/catalog/crm'>CRM</a></li>
+        <li><a href='http://140.119.97.4:8888/catalog/om'>OM</a></li>
+      </ul>
+    </div>
+    <div id="main">
+      <ul style="list-style-type: none;">
+        <li><a href="http://140.119.97.4:8888/catalog/welcome" style="color:brown;">Dashboard</a></li>
+        <li>></li>
+        <li><a href="http://140.119.97.4:8888/catalog/om" style="color:brown;">OM</a></li>
+        <li>></li>
+        <li>叫貨系統</li>
+      </ul>
+      <div id="btn">
+        <script language="javascript">
+          function logout(){
+            var yes=confirm("確定要登出嗎?");
+            if(yes){
+              window.location.href='http://140.119.97.4:8888';
+            }
+          }
+        </script>
+        <input type="button" value="登出" id="logOut" onclick="logout();" />
+      </div>
+    </div>
+    <div id="om">
+        <nav>
+          <ul>
+            <li><a href='http://140.119.97.4:8888/catalog/om/inventory'>庫存追蹤</a></li>
+            <li><a href='http://140.119.97.4:8888/catalog/om/orders' style="background:rgba(182, 173, 157, 0.5); border: solid;
+              border-color: rgba(182, 173, 157, 0.8); padding: 8px 20px; border-radius: 20px; color: #382f21;">叫貨系統</a></li>
+          </ul>
+        </nav>
+    </div>
+    <div id="order" style="height: 350px;
+    width: 665px;
+    position: relative;
+    top: 170px;
+    left: 400px;
+    background-color: #f4f4ed;
+    z-index: 5;
+    position: fixed;">
+      <table border="1" cellpadding="0" cellspacing="0">
+      <tr>
+        <th style="padding: 10px 15px;background-color:rgba(230,210,210);">品名</th>
+        <th style="padding: 10px 30px;background-color:rgba(230,210,210);">再訂購量</th>
+        <th style="padding: 10px 30px;background-color:rgba(230,210,210);">數量</th>
+        <th style="padding: 10px 15px;background-color:rgba(230,210,210);">廠商</th>
+        <th style="padding: 10px 15px;background-color:rgba(230,210,210);">電話</th>
+        <th style="padding: 10px 40px;background-color:rgba(230,210,210);">訂購鍵</th>
+      </tr>
+        {% if cornOrder == True %}
+        <tr>
+          <th>玉米</th>
+          <th style="padding: 5px 30px;">要再訂購</th>
+          <th>{{deviationCorn}}</th>
+          <th>{{a}}</th>
+          <th>{{b}}</th>
+          <th>
+            <script language="javascript">
+              function disable(value){
+　                if(value=='1'){
+　                 document.getElementById("rooo").disabled=false;　// 變更欄位為可用
+　                 }else{
+　                 document.getElementById("rooo").disabled=true;　// 變更欄位為禁用
+　                }
+                }
+            </script>
+            <input type="button" value="訂購" id="rooo" onclick="disable(2)" />
+          </th>
+          {% endif %}
+        {% if cheeseOrder == True %}
+        <tr>
+          <th>起司</th>
+          <th style="padding: 5px 15px;">要再訂購</th>
+          <th>{{deviationCheese}}</th>
+          <th>{c}}</th>
+          <th>{{d}}</th>
+          <th>
+            <script language="javascript">
+              function disable(value){
+　                if(value=='1'){
+　                 document.getElementById("rooo").disabled=false;　// 變更欄位為可用
+　                 }else{
+　                 document.getElementById("rooo").disabled=true;　// 變更欄位為禁用
+　                }
+                }
+            </script>
+            <input type="button" value="訂購" id="rooo" onclick="disable(2)" />
+          </th>
+        </tr>
+          {% endif %}
+          {% if bananaOrder == True %}
+        <tr>
+          <th>香蕉</th>
+          <th style="padding: 5px 15px;">要再訂購</th>
+          <th>{{deviationBanana}}</th>
+          <th>{{e}}</th>
+          <th>{{f}}</th>
+          <th>
+            <script language="javascript">
+              function disable(value){
+　                if(value=='1'){
+　                 document.getElementById("rooo").disabled=false;　// 變更欄位為可用
+　                 }else{
+　                 document.getElementById("rooo").disabled=true;　// 變更欄位為禁用
+
+　                }
+                }
+            </script>
+            <input type="button" value="訂購" id="rooo" onclick="disable(2)" />
+          </th>
+        </tr>
+        {% endif %}
+        {% if blackOrder == True %}
+        <tr>
+          <th>紅茶</th>
+          <th style="padding: 5px 15px;">要再訂購</th>
+          <th>{{deviationBlack}}</th>
+          <th>{{g}}</th>
+          <th>{{h}}</th>
+          <th>
+            <script language="javascript">
+              function disable(value){
+　                if(value=='1'){
+　                 document.getElementById("rooo").disabled=false;　// 變更欄位為可用
+　                 }else{
+　                 document.getElementById("rooo").disabled=true;　// 變更欄位為禁用
+　                }
+                }
+            </script>
+            <input type="button" value="訂購" id="rooo" onclick="disable(2)" />
+          </th>
+        </tr>
+        {% endif %}
+        {% if greenOrder == True %}
+        <tr>
+          <th>綠茶</th>
+          <th style="padding: 5px 15px;">要再訂購</th>
+          <th>{{deviationGreen}}</th>
+          <th>{{i}}</th>
+          <th>{{j}}</th>
+          <th>
+            <script language="javascript">
+              function disable(value){
+　                if(value=='1'){
+　                 document.getElementById("rooo").disabled=false;　// 變更欄位為可用
+　                 }else{
+　                 document.getElementById("rooo").disabled=true;　// 變更欄位為禁用
+　                }
+                }
+            </script>
+            <input type="button" value="訂購" id="rooo" onclick="disable(2)" />
+          </th>
+        </tr>
+        {% endif %}
+
+        {% if cornOrder == False %}
+        {% if cheeseOrder == False %}
+        {% if bananaOrder == False %}
+        {% if blackOrder == False %}
+        {% if greenOrder == False %}
+        <tr>
+          <th>庫存足夠! 請放心</th>
+        </tr>
+        {% endif %}
+        {% endif %}
+        {% endif %}
+        {% endif %}
+        {% endif %}
+      </table>
+    </div>
+  </div>
+</body>

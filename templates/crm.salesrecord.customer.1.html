@@ -1,0 +1,162 @@
+{% load static %}
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" ; charset="utf-8" />
+  <title>顧客管理系統</title>
+  <link rel="stylesheet" href="{% static 'style2.css' %}" />
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="sidebar">
+      <header>
+        <div id="logo">
+          <img
+            src="{% static 'logo1.jpg' %}"
+            alt=""
+            width="250;"
+            style="display: block; margin: auto"
+          />
+        </div>
+      </header>
+      <ul style="list-style-type: none">
+        <li><a href='http://140.119.97.4:8888/catalog/crm'>CRM</a></li>
+        <li><a href='http://140.119.97.4:8888/catalog/om'>OM</a></li>
+      </ul>
+    </div>
+    <div id="main">
+      <ul style="list-style-type: none">
+        <li><a href='http://140.119.97.4:8888/catalog/welcome' style="color: brown">Dashboard</a></li>
+        <li>></li>
+        <li><a href='http://140.119.97.4:8888/catalog/crm' style="color: brown">CRM</a></li>
+        <li>></li>
+        <li>銷售紀錄</li>
+      </ul>
+      <div id="btn">
+        <script language="javascript">
+          function logout() {
+            var yes = confirm("確定要登出嗎?");
+            if (yes) {
+              window.location.href = 'http://140.119.97.4:8888';
+            }
+          }
+        </script>
+        <input type="button" value="登出" id="logOut" onclick="logout();" />
+      </div>
+    </div>
+    <div id="crm">
+      <nav>
+        <ul>
+          <li>
+            <a
+              href="http://140.119.97.4:8888/catalog/crm/salesrecord"
+              style="
+                background: rgba(182, 173, 157, 0.5);
+                border: solid;
+                border-color: rgba(182, 173, 157, 0.8);
+                padding: 8px 20px;
+                border-radius: 20px;
+                color: #382f21;
+              "
+              >銷售紀錄</a
+            >
+          </li>
+          <li><a href='http://140.119.97.4:8888/catalog/crm/salesanalysis'>銷售分析</a></li>
+          <li><a href='http://140.119.97.4:8888/catalog/crm/rfm'>顧客分群</a></li>
+          <li><a href='http://140.119.97.4:8888/catalog/crm/broadcast'>推播紀錄</a></li>
+        </ul>
+      </nav>
+      <div id="btnnn">
+
+        <input
+          type="button"
+          value="全部"
+          id="srall"
+          onclick="location.href='http://140.119.97.4:8888/catalog/crm/salesrecord'"
+
+        />
+        <input
+          type="button"
+           value="特定顧客"
+         id="srdate"
+           onclick="location.href='http://140.119.97.4:8888/catalog/crm/salesrecord/customer'"
+          style="background-color: rgba(182, 173, 157, 0.4);"
+        />
+
+
+      </div>
+      <div id="cssc" style="width:150px;height:20px;padding:5px 15px; background:#ccc; border:0 none;
+        cursor:pointer;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        text-align:center;
+        position: relative;
+        top: 160px;
+        left: 175px;
+        z-index: 8;
+        margin-left: 660px;
+       position:fixed;">
+       <form>
+         <div class="form-group">
+           <input class="form-control" placeholder="請輸入電話號碼" name="text" type="text" id="text">
+         </div>
+
+
+         <div id="btnn">
+           <script language="javascript">
+             function srh() {
+               var s = document.getElementById("text");
+
+               if (s.value == "") {
+               alert("請輸入電話");
+             } else if(s.value == "0911111111" ){
+               window.location.href='http://140.119.97.4:8888/catalog/crm/salesrecord/customer/1';
+               }
+             }
+           </script>
+           <input type="button" value="搜尋" id="cus" onclick="srh();">
+           </input>
+         </div>
+       </form>
+      </div>
+      <div id="customer1">
+        <table border="1" cellpadding="0" cellspacing="0" style="display:block;height: 340px;
+        width: 665px;
+        position: relative;
+        top: 220px;
+        left: 400px;
+        background-color: #f4f4ed;
+        z-index: 5;
+        position:fixed;
+
+        overflow-x:hidden;
+        overflow-y:auto;
+        white-space:nowrap;
+        ">
+
+        <tr>
+            <th style="position: sticky; top:0;background-color:rgba(230,210,210);padding: 10px 30px;">ID</th>
+            <th style="position: sticky; top:0;background-color:rgba(230,210,210);padding: 10px 25px;">名字</th>
+            <th style="position: sticky; top:0;background-color:rgba(230,210,210);padding: 10px 25px;">購買日期</th>
+            <th style="position: sticky; top:0;background-color:rgba(230,210,210);padding: 10px 25px;">購買品項</th>
+            <th style="position: sticky; top:0;background-color:rgba(230,210,210);padding: 10px 25px;">金額</th>
+            <th style="position: sticky; top:0;background-color:rgba(230,210,210);padding: 10px 25px;">購物編號</th>
+
+          </tr>
+          {% for getdata in customer1 %}
+          <tr>
+            <td style="text-align:center; padding: 10px 13px;">{{getdata.id}}</td>
+            <td style="text-align:center; padding: 10px 10px;">{{getdata.名字}}</td>
+            <td style="text-align:center; padding: 10px 10px;">{{getdata.購買日期}}</td>
+            <td style="text-align:center; padding: 10px 10px;">{{getdata.購買品項}}</td>
+            <td style="text-align:center; padding: 10px 10px;">{{getdata.金額}}</td>
+            <td style="text-align:center; padding: 10px 10px;">{{getdata.購物編號}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+
+
+      </div>
+    </div>
+  </div>
+</body>

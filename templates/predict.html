@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+<title>predict</title>
+</head>
+<body>
+  <h1>在學精神分裂...好無聊</h1>
+  <table>
+    <tr>
+      <th>Ordernumber</th>
+      <th>date</th>
+      <th>CPhonenum</th>
+
+    </tr>
+    {% for getdata in orders %}
+    <tr>
+      <td>{{getdata.Ordernumber}}</td>
+      <td>{{getdata.date}}</td>
+      <td>{{getdata.CPhonenum}}</td>
+
+    </tr>
+    {% endfor %}
+  </table>
+
+</body>
+</html>

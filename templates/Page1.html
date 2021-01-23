@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+<title>heyyyyy</title>
+</head>
+<body>
+  <h1>Start FUCK U JAVA</h1>
+  <table>
+    <tr>
+      <th>Ordernumber</th>
+      <th>date</th>
+      <th>CPhonenum</th>
+
+    </tr>
+    {% for getdata in orders %}
+    <tr>
+      <td>{{getdata.Ordernumber}}</td>
+      <td>{{getdata.date}}</td>
+      <td>{{getdata.CPhonenum}}</td>
+
+    </tr>
+    {% endfor %}
+  </table>
+  <a href="http://140.119.97.4:8888/catalog/predict/">predictions</a>
+  <a href="http://140.119.97.4:8888/catalog/posSite/">POS</a>
+</body>
+</html>

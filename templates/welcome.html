@@ -1,0 +1,53 @@
+{% load static %}
+<head>
+  <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+  <title>管理系統</title>
+  <link rel="stylesheet" href="{% static 'style1.css' %}">
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="sidebar">
+      <header>
+      <div id="logo">
+        <img src="{% static 'logo1.jpg' %}" alt="" width=250; style="display:block; margin:auto;" />
+    </div>
+    </header>
+      <ul style='list-style-type:none;'>
+        <li><a href='http://140.119.97.4:8888/catalog/crm'>CRM</a></li>
+        <li><a href='http://140.119.97.4:8888/catalog/om'>OM</a></li>
+      </ul>
+    </div>
+    <div id="main">
+      <ul style="list-style-type: none;">
+        <li>Dashboard</li>
+      </ul>
+      <div id="btn">
+        <script language="javascript">
+          function logout(){
+            var yes=confirm("確定要登出嗎?");
+            if(yes){
+              window.location.href='http://140.119.97.4:8888';
+            }
+          }
+        </script>
+        <input type="button" value="登出" id="logOut" onclick="logout();" />
+      </div>
+    </div>
+    <div id="content">
+      <div id="content_in">
+        <h1> Hi there, 政大店！</h1>
+        <h2> Reminders</h2>
+          <p>
+            <div style="border-width: 3px; border-style:inset ; width: 600px; height: 300px; border-color: rgb(146, 136, 126); padding: 5px; border-radius: 10px; text-align: left; background-color: rgb(190, 180, 170, 0.2); margin-left: 30px; margin-top: 10px;">
+              <ul style="list-style-type: none; letter-spacing: 2px; line-height: 30px;">
+                <li>2020/12/23  注意！鮪魚餡料製作方法更改。</li>
+                <li>2020/12/20  注意！紅茶製作配方調整。</li>
+                <li>2020/12/10  提醒！12/15季節商品開賣！</li>
+              </ul>
+          </div>
+          </p>
+      </div>
+    </div>
+  </div>
+</body>

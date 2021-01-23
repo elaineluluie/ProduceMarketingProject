@@ -1,0 +1,55 @@
+{% load static %}
+<head>
+  <meta http-equiv="Content-Type" content="text/html" ; charset="utf-8" />
+  <title>顧客管理系統</title>
+  <link rel="stylesheet" href="{% static 'style2.css' %}" />
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="sidebar">
+      <header>
+        <div id="logo">
+          <img
+            src="{% static 'logo1.jpg' %}"
+            alt=""
+            width="250;"
+            style="display: block; margin: auto"
+          />
+        </div>
+      </header>
+      <ul style="list-style-type: none">
+        <li><a href='http://140.119.97.4:8888/catalog/crm'>CRM</a></li>
+        <li><a href='http://140.119.97.4:8888/catalog/om'>OM</a></li>
+      </ul>
+    </div>
+    <div id="main">
+      <ul style="list-style-type: none">
+        <li><a href='http://140.119.97.4:8888/catalog/welcome' style="color: brown">Dashboard</a></li>
+        <li>></li>
+        <li>CRM</li>
+      </ul>
+      <div id="btn">
+        <script language="javascript">
+          function logout() {
+            var yes = confirm("確定要登出嗎?");
+            if (yes) {
+              window.location.href = 'http://140.119.97.4:8888';
+            }
+          }
+        </script>
+        <input type="button" value="登出" id="logOut" onclick="logout();" />
+      </div>
+    </div>
+    <div id="crm">
+      <nav>
+        <ul style="list-style-type: none">
+          <li><a href='http://140.119.97.4:8888/catalog/crm/salesrecord'>銷售紀錄</a></li>
+          <li><a href='http://140.119.97.4:8888/catalog/crm/salesanalysis'>銷售分析</a></li>
+          <li><a href='http://140.119.97.4:8888/catalog/crm/rfm'>顧客分群</a></li>
+          <li><a href='http://140.119.97.4:8888/catalog/crm/broadcast'>推播紀錄</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,102 @@
+{% load static%}
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+  <title>作業管理系統</title>
+  <link rel="stylesheet" href="{% static 'style3.css' %}">
+</head>
+
+<body>
+  <div id="wrapper">
+
+    <div id="sidebar">
+      <header>
+      <div id="logo">
+        <img src="{% static 'logo1.jpg' %}"alt="" width=250; style="display:block; margin:auto;" />
+      </div>
+    </header>
+      <ul style='list-style-type:none;'>
+        <li><a href='http://140.119.97.4:8888/catalog/crm'>CRM</a></li>
+        <li><a href='http://140.119.97.4:8888/catalog/om'>OM</a></li>
+      </ul>
+    </div>
+    <div id="main">
+      <ul style="list-style-type: none;">
+        <li><a href="http://140.119.97.4:8888/catalog/welcome" style="color:brown;">Dashboard</a></li>
+        <li>></li>
+        <li>OM</li>
+      </ul>
+      <div id="btn">
+        <script language="javascript">
+          function logout(){
+            var yes=confirm("確定要登出嗎?");
+            if(yes){
+              window.location.href='http://140.119.97.4:8888';
+            }
+          }
+        </script>
+        <input type="button" value="登出" id="logOut" onclick="logout();" />
+      </div>
+    </div>
+    <div id="om">
+      <nav>
+        <ul style="list-style-type: none;">
+          <li><a href='http://140.119.97.4:8888/catalog/om/inventory' style="background:rgba(182, 173, 157, 0.5); border: solid;
+            border-color: rgba(182, 173, 157, 0.8); padding: 8px 20px; border-radius: 20px; color: #382f21;">庫存追蹤</a></li>
+          <li><a href='http://140.119.97.4:8888/catalog/om/orders'>叫貨系統</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div id="inv" style="height: 350px;
+    width: 600px;
+    position: relative;
+    top: 180px;
+    left: 400px;
+    background-color: #f4f4ed;
+    z-index: 5;
+    position: fixed;">
+      <table border="1" cellpadding="0" cellspacing="0" style="height: 350px;
+      width: 700px;
+      position: relative;
+      top: 180px;
+      left: 400px;
+      background-color: #f4f4ed;
+      z-index: 5;
+      position: fixed;">
+        <tr>
+      <th style="background-color:rgba(230,210,210);">編號</th>
+      <th style="background-color:rgba(230,210,210);">品名</th>
+      <th style="background-color:rgba(230,210,210);">價格</th>
+      <th style="background-color:rgba(230,210,210);">庫存</th>
+      <th style="background-color:rgba(230,210,210);">前置時間</th>
+      <th style="background-color:rgba(230,210,210);">鬆餅數量</th>
+      <th style="background-color:rgba(230,210,210);">需要訂貨?</th>
+      
+
+    </tr>
+    {% for getdata in material %}
+      {% if getdata.orderOrNot == True %}
+    <tr style="background-color:rgba(250,0,2,.4);">
+      <td style="font-weight:bold">{{getdata.MID}}</td>
+      <td style="font-weight:bold">{{getdata.Mname}}</td>
+      <td style="font-weight:bold">{{getdata.MPrice}}</td>
+      <td style="font-weight:bold">{{getdata.Mcount}}</td>
+      <td style="font-weight:bold">{{getdata.LTime}}</td>
+      <td style="font-weight:bold">{{getdata.WLeft}}</td>
+      <td style="font-weight:bold">請至叫貨系統訂貨</td>
+
+      {% elif getdata.orderOrNot == False %}
+      <td>{{getdata.MID}}</td>
+      <td>{{getdata.Mname}}</td>
+      <td>{{getdata.MPrice}}</td>
+      <td>{{getdata.Mcount}}</td>
+      <td>{{getdata.LTime}}</td>
+      <td>{{getdata.WLeft}}</td>
+      <td>庫存充沛</td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+    </table>
+    </div>
+  </div>
+</body>
